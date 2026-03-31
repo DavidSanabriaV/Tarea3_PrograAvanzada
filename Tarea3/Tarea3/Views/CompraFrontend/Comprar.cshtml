@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Comprar Tiquete";
+    var eventoId = Context.Request.RouteValues["id"];
+}
+
+<h2 class="mb-3">Comprar Tiquete <span class="badge bg-info">Frontend</span></h2>
+<div id="alert-container"></div>
+
+<div id="compra-container" data-evento-id="@eventoId">
+
+    <div class="card mb-3" style="max-width:500px">
+        <div class="card-body">
+            <h5 class="card-title" id="evento-nombre">Cargando...</h5>
+            <p class="card-text">
+                <strong>Lugar:</strong> <span id="evento-lugar"></span><br />
+                <strong>Fecha:</strong> <span id="evento-fecha"></span><br />
+                <strong>Precio unitario:</strong> <span id="evento-precio"></span>
+                <span id="precio-unitario" data-precio="0" class="d-none"></span>
+            </p>
+        </div>
+    </div>
+
+    <form id="compra-form" class="row g-3" style="max-width:400px">
+        <div class="col-12">
+            <label for="NombreCliente" class="form-label">Su nombre</label>
+            <input type="text" id="NombreCliente" class="form-control" required />
+        </div>
+        <div class="col-12">
+            <label for="Cantidad" class="form-label">Cantidad de tiquetes</label>
+            <input type="number" id="Cantidad" class="form-control" min="1" value="1" required />
+        </div>
+        <div class="col-12">
+            <p class="fw-bold">Total: <span id="total-display">₡0.00</span></p>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Confirmar Compra</button>
+            <a href="/eventos" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/evento-api.js"></script>
+    <script src="~/js/compra-api.js"></script>
+    <script src="~/js/compra-form.js"></script>
+}

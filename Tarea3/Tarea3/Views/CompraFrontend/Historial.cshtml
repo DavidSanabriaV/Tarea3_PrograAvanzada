@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Historial de Compras";
+    var nombreCliente = Context.Request.RouteValues["nombreCliente"];
+}
+
+<h2 class="mb-3">Historial de Compras <span class="badge bg-info">Frontend</span></h2>
+
+<div id="historial-container" data-cliente="@nombreCliente">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Cliente</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody id="historial-tbody">
+            <tr id="historial-loading">
+                <td colspan="5" class="text-center">
+                    <div class="spinner-border spinner-border-sm" role="status"></div>
+                    Cargando...
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/compra-api.js"></script>
+    <script src="~/js/compra-historial.js"></script>
+}
