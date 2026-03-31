@@ -16,5 +16,10 @@ namespace Tarea3.Controllers
         {
             return View("~/Views/Auth/Register.cshtml");
         }
+        [HttpGet("AccesoDenegado")]
+        public IActionResult AccesoDenegado()
+        {
+            return View("~/Views/Auth/AccesoDenegado.cshtml");
+        }
     }
 }

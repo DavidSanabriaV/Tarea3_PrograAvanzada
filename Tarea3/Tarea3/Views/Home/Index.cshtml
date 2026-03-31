@@ -7,12 +7,12 @@
     <p class="mb-4 text-muted">
         Seleccione el módulo al que desea ingresar
     </p>
+
     <div class="d-flex justify-content-center gap-4">
-        <a asp-controller="EventoFrontEnd"
-           asp-action="Index"
-           class="btn btn-primary btn-lg">Eventos</a>
-        <a asp-controller="CompraFrontend"
-           asp-action="Index"
-           class="btn btn-success btn-lg">Compras</a>
+        <a href="/eventos" class="btn btn-primary btn-lg">Eventos</a>
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <a href="/compras/historial/@User.Identity.Name" class="btn btn-success btn-lg">Compras</a>
+        }
     </div>
 </div>

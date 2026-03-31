@@ -2,6 +2,8 @@
     const form = document.getElementById('login-form');
     const alertContainer = document.getElementById('alert-container');
 
+    if (!form) return;
+
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
         alertContainer.innerHTML = '';
@@ -9,7 +11,7 @@
         const credenciales = {
             email: document.getElementById('Email').value.trim(),
             password: document.getElementById('Password').value,
-            rememberMe: false
+            rememberMe: document.getElementById('RememberMe').checked
         };
 
         const result = await authApi.login(credenciales);
@@ -20,6 +22,8 @@
         }
 
         alertContainer.innerHTML =
-            '<div class="alert alert-danger">' + (result.data.message || 'Error al iniciar sesión.') + '</div>';
+            '<div class="alert alert-danger">' +
+            (result.data.message || 'Error al iniciar sesión.') +
+            '</div>';
     });
 });
