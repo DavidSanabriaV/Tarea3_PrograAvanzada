@@ -10,9 +10,5 @@
 
     <div class="d-flex justify-content-center gap-4">
         <a href="/eventos" class="btn btn-primary btn-lg">Eventos</a>
-        @if (User.Identity != null && User.Identity.IsAuthenticated)
-        {
-            <a href="/compras/historial/@User.Identity.Name" class="btn btn-success btn-lg">Compras</a>
-        }
     </div>
 </div>

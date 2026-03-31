@@ -11,7 +11,6 @@
         const credenciales = {
             email: document.getElementById('Email').value.trim(),
             password: document.getElementById('Password').value,
-            rememberMe: document.getElementById('RememberMe').checked
         };
 
         const result = await authApi.login(credenciales);
