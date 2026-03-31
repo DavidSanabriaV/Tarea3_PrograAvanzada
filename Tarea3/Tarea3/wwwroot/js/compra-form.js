@@ -6,25 +6,25 @@
     try {
         const evento = await eventoApi.obtenerPorId(eventoId);
         if (!evento) {
-            container.innerHTML = <div class="alert alert-warning">Evento no encontrado.</div>;
+            container.innerHTML = `<div class="alert alert-warning">Evento no encontrado.</div>`;
             return;
         }
 
         document.getElementById('evento-nombre').textContent = evento.nombre;
         document.getElementById('evento-lugar').textContent = evento.lugar;
         document.getElementById('evento-fecha').textContent = new Date(evento.fecha).toLocaleDateString();
-        document.getElementById('evento-precio').textContent = ₡${ evento.precio.toFixed(2) };
+        document.getElementById('evento-precio').textContent = `₡${evento.precio.toFixed(2)}`;
         document.getElementById('precio-unitario').dataset.precio = evento.precio;
 
     } catch {
-        container.innerHTML = <div class="alert alert-danger">Error al cargar el evento.</div>;
+        container.innerHTML = `<div class="alert alert-danger">Error al cargar el evento.</div>`;
         return;
     }
 
     document.getElementById('Cantidad').addEventListener('input', function () {
         const precio = parseFloat(document.getElementById('precio-unitario').dataset.precio) || 0;
         const cantidad = parseInt(this.value) || 0;
-        document.getElementById('total-display').textContent = ₡${ (precio * cantidad).toFixed(2) };
+        document.getElementById('total-display').textContent = `₡${(precio * cantidad).toFixed(2)}`;
     });
 
     document.getElementById('compra-form').addEventListener('submit', async function (e) {
@@ -42,11 +42,14 @@
         if (result.success) {
             alertContainer.innerHTML = `
                 <div class="alert alert-success">
-                    ✅ Compra realizada. Total: ₡${result.data.total?.toFixed(2)}
+                     Compra realizada. Total: ₡${result.data.total?.toFixed(2)}
                 </div>`;
             setTimeout(() => {
                 const nombre = document.getElementById('NombreCliente').value.trim();
-                window.location.href = /compras/historial / ${ nombre };
+
+                localStorage.setItem("clienteCompra", nombre);
+
+                window.location.href = `/compras/historial/${encodeURIComponent(nombre)}`;
             }, 2000);
             return;
         }

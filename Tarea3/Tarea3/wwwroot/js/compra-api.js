@@ -14,7 +14,7 @@
     },
 
     obtenerHistorial: async function (nombreCliente) {
-        const response = await fetch(${ this.baseUrl } / ${ nombreCliente }, {
+        const response = await fetch(`${this.baseUrl}/${nombreCliente}`, {
             credentials: 'include'
         });
         if (!response.ok) throw new Error('Error al cargar historial');

@@ -2,7 +2,10 @@
 
 async function cargarHistorial() {
     const container = document.getElementById('historial-container');
-    const nombreCliente = container.dataset.cliente;
+    let nombreCliente = container.dataset.cliente;
+    if (!nombreCliente) {
+        nombreCliente = localStorage.getItem("clienteCompra");
+    }
     const loading = document.getElementById('historial-loading');
     const tbody = document.getElementById('historial-tbody');
 
@@ -11,7 +14,7 @@ async function cargarHistorial() {
         loading.classList.add('d-none');
 
         if (compras.length === 0) {
-            tbody.innerHTML = <tr><td colspan="5" class="text-center text-muted">No hay compras registradas.</td></tr>;
+            tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted">No hay compras registradas.</td></tr>`;
             return;
         }
 
@@ -26,6 +29,6 @@ async function cargarHistorial() {
 
     } catch {
         loading.classList.add('d-none');
-        tbody.innerHTML = <tr><td colspan="5" class="text-center text-danger">Error al cargar el historial.</td></tr>;
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Error al cargar el historial.</td></tr>`;
     }
 }
