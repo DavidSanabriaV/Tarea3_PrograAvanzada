@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tarea3.Constants;
 using Tarea3.Models;
-using Tarea3.Services;
 
 namespace Tarea3.Services
 {
@@ -23,9 +22,8 @@ namespace Tarea3.Services
         {
             var existingUser = await _userManager.Users
                 .FirstOrDefaultAsync(u => u.Cedula == model.Cedula);
-
             if (existingUser != null)
-                return (false, ["Esta cédula ya está registrada."]);
+                return (false, new[] { "Esta cédula ya está registrada." });
 
             var persona = new Persona
             {
@@ -37,14 +35,12 @@ namespace Tarea3.Services
             };
 
             var result = await _userManager.CreateAsync(persona, model.Password);
-
             if (!result.Succeeded)
                 return (false, result.Errors.Select(e => e.Description));
 
             await _userManager.AddToRoleAsync(persona, Roles.User);
             await _signInManager.SignInAsync(persona, isPersistent: false);
-
-            return (true, []);
+            return (true, Enumerable.Empty<string>());
         }
 
         public async Task<(bool Succeeded, string? ErrorMessage)> LoginAsync(string email, string password, bool rememberMe)

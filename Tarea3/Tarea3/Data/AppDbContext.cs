@@ -8,9 +8,7 @@ namespace Tarea3.Data
     public class AppDbContext : IdentityDbContext<Persona, IdentityRole<int>, int>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) { }
 
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Evento> Eventos { get; set; }
@@ -30,5 +28,5 @@ namespace Tarea3.Data
                 .HasIndex(p => p.Cedula)
                 .IsUnique();
         }
-        }
+    }
 }
