@@ -28,5 +28,10 @@ namespace Tarea3.Repositories
             _context.SaveChanges();
             return true;
         }
+        public void Actualizar(Evento evento)
+        {
+            _context.Eventos.Update(evento);
+            _context.SaveChanges();
+        }
     }
 }

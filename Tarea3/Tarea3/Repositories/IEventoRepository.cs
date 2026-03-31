@@ -7,5 +7,6 @@ namespace Tarea3.Repositories
         List<Evento> ObtenerTodos();
         Evento? ObtenerPorId(int id);
         bool Crear(Evento evento);
+        void Actualizar(Evento evento);
     }
 }

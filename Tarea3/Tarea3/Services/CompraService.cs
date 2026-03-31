@@ -27,7 +27,7 @@ namespace Tarea3.Services
             compra.Total = evento.Precio * compra.Cantidad;
             compra.FechaCompra = DateTime.Now;
             evento.CantidadDisponible -= compra.Cantidad;
-
+            _eventoRepository.Actualizar(evento); 
             _repository.Crear(compra);
             return true;
         }
