@@ -2,23 +2,20 @@
 using Microsoft.AspNetCore.Mvc;
 using Tarea3.Constants;
 
-namespace Tarea3.Controllers
+[Route("eventos")]
+[Authorize]
+public class EventosFrontendController : Controller
 {
-    [Route("eventos")]
-    [Authorize]
-    public class EventosFrontendController : Controller
+    [HttpGet("")]
+    public IActionResult Index()
     {
-        [HttpGet("")]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View("~/Views/EventoFrontEnd/Index.cshtml");
+    }
 
-        [HttpGet("crear")]
-        [Authorize(Roles = Roles.Admin)]
-        public IActionResult Crear()
-        {
-            return View();
-        }
+    [HttpGet("crear")]
+    [Authorize(Roles = Roles.Admin)]
+    public IActionResult Crear()
+    {
+        return View("~/Views/EventoFrontEnd/Crear.cshtml");
     }
 }

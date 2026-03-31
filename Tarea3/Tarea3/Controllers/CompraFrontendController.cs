@@ -8,9 +8,9 @@ namespace Tarea3.Controllers
     public class ComprasFrontendController : Controller
     {
         [HttpGet("comprar/{id}")]
-        public IActionResult Comprar(int id) => View();
+        public IActionResult Comprar(int id) => View("~/Views/CompraFrontend/Comprar.cshtml");
 
         [HttpGet("historial/{nombreCliente}")]
-        public IActionResult Historial(string nombreCliente) => View();
+        public IActionResult Historial(string nombreCliente) => View("~/Views/CompraFrontend/Historial.cshtml");
     }
 }
