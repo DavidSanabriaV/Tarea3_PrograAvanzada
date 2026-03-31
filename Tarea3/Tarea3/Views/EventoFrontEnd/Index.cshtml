@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Eventos Disponibles";
+}
+
+<h2 class="mb-3">Eventos <span class="badge bg-info">Disponibles</span></h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <a href="/eventos/crear" class="btn btn-success mb-3">+ Crear Evento</a>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Precio</th>
+            <th>Disponibilidad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="eventos-tbody">
+        <tr id="eventos-loading">
+            <td colspan="6" class="text-center">
+                <div class="spinner-border spinner-border-sm" role="status"></div>
+                Cargando...
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/evento-api.js"></script>
+    <script src="~/js/evento-index.js"></script>
+}

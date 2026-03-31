@@ -10,7 +10,7 @@ namespace Tarea3.Controllers
         [HttpGet("comprar/{id}")]
         public IActionResult Comprar(int id) => View();
 
-        [HttpGet("historial")]
-        public IActionResult Historial() => View();
+        [HttpGet("historial/{nombreCliente}")]
+        public IActionResult Historial(string nombreCliente) => View();
     }
 }
