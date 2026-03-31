@@ -10,28 +10,44 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    <div class="card shadow p-4" style="min-width:380px">
+    <div class="card shadow p-4" style="min-width:400px">
         <h4 class="mb-3 text-center">Crear Cuenta</h4>
         <div id="alert-container"></div>
+
         <form id="register-form">
             <div class="mb-3">
-                <label for="Nombre" class="form-label">Nombre</label>
+                <label for="Nombre" class="form-label">Nombre completo</label>
                 <input type="text" id="Nombre" class="form-control" required />
             </div>
             <div class="mb-3">
-                <label for="Email" class="form-label">Correo</label>
+                <label for="Email" class="form-label">Correo electrónico</label>
                 <input type="email" id="Email" class="form-control" required />
             </div>
             <div class="mb-3">
                 <label for="Password" class="form-label">Contraseña</label>
                 <input type="password" id="Password" class="form-control" required />
             </div>
+            <div class="mb-3">
+                <label for="ConfirmPassword" class="form-label">Confirmar contraseña</label>
+                <input type="password" id="ConfirmPassword" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="Cedula" class="form-label">Cédula</label>
+                <input type="text" id="Cedula" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label for="Edad" class="form-label">Edad</label>
+                <input type="number" id="Edad" class="form-control" required min="1" max="120" />
+            </div>
+
             <button type="submit" class="btn btn-success w-100">Registrarse</button>
         </form>
+
         <div class="mt-2 text-center">
-            <a href="/auth/login">¿Ya tenés cuenta? Iniciá sesión</a>
+            <a href="/auth-frontend/login">¿Ya tenés cuenta? Iniciá sesión</a>
         </div>
     </div>
+
     <script src="~/js/auth-api.js"></script>
     <script src="~/js/auth-register.js"></script>
 </body>

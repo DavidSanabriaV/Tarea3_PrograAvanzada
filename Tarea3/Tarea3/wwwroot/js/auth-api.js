@@ -2,7 +2,7 @@
     baseUrl: '/api/auth',
 
     login: async function (credenciales) {
-        const response = await fetch(${ this.baseUrl } / login, {
+        const response = await fetch(this.baseUrl + '/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -14,7 +14,7 @@
     },
 
     register: async function (usuario) {
-        const response = await fetch(${ this.baseUrl } / register, {
+        const response = await fetch(this.baseUrl + '/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -26,9 +26,10 @@
     },
 
     logout: async function () {
-        await fetch(${ this.baseUrl } / logout, {
+        await fetch(this.baseUrl + '/logout', {
             method: 'POST',
             credentials: 'include'
         });
+        window.location.href = "/";
     }
 };

@@ -15,11 +15,11 @@
         const result = await authApi.login(credenciales);
 
         if (result.success) {
-            window.location.href = '/eventos';
+            window.location.href = '/';
             return;
         }
 
-        alertContainer.innerHTML = `
-            <div class="alert alert-danger">${result.data.message || 'Error al iniciar sesión.'}</div>`;
+        alertContainer.innerHTML =
+            '<div class="alert alert-danger">' + (result.data.message || 'Error al iniciar sesión.') + '</div>';
     });
 });

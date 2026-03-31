@@ -8,13 +8,13 @@ namespace Tarea3.Controllers
         [HttpGet("login")]
         public IActionResult Login()
         {
-            return View();
+            return View("~/Views/Auth/Login.cshtml");
         }
 
         [HttpGet("register")]
         public IActionResult Register()
         {
-            return View();
+            return View("~/Views/Auth/Register.cshtml");
         }
     }
 }
